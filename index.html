@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viswanadham Ampolu</title>
+<meta name="description" content="Portfolio of Viswanadham Ampolu: operations and transformation consulting, project management and analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one 1080px column; a process-capability chart opens the page, then case files laid out like an engineering register */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#132029; --muted:#55636d; --rule:#d5dce1;
+  --accent:#0b6e75; --accent-soft:#dcecec; --signal:#c7791a; --signal-soft:#f6e8d3;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f171c; --surface:#16222a; --ink:#e4ebef; --muted:#9aa9b3; --rule:#2a3a44;
+  --accent:#4fc1c6; --accent-soft:#163a3e; --signal:#f0a54a; --signal-soft:#3a2b17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f171c; --surface:#16222a; --ink:#e4ebef; --muted:#9aa9b3; --rule:#2a3a44;
+  --accent:#4fc1c6; --accent-soft:#163a3e; --signal:#f0a54a; --signal-soft:#3a2b17; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-stretch:112%;text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800}
+h3{font-size:1.1rem;font-weight:600;line-height:1.3}
+p{margin:0}
+.label{font:500 .72rem/1.2 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* top bar */
+.top{border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding-block:14px}
+.top nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.top nav a{color:var(--muted);text-decoration:none;font-size:.9rem}
+.top nav a:hover{color:var(--ink)}
+.mark{font:800 1rem/1 var(--display);font-stretch:112%;letter-spacing:.02em;color:var(--ink);text-decoration:none}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;padding-block:56px 48px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,5.4vw,3.7rem);font-weight:800;letter-spacing:-.01em}
+.hero h1 span{display:block;color:var(--accent)}
+.lede{margin-top:20px;font-size:1.08rem;max-width:58ch;color:var(--ink)}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font:500 .8rem/1 var(--mono);padding:7px 10px;border:1px solid var(--rule);border-radius:999px;background:var(--surface);color:var(--ink)}
+.chip.on{border-color:var(--accent);background:var(--accent-soft)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-block;font:600 .92rem/1 var(--body);padding:12px 16px;border-radius:6px;text-decoration:none;border:1px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.ghost{color:var(--accent)}
+
+.capfig{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px 18px 14px;min-width:0}
+.capfig svg{display:block;width:100%;height:auto}
+.capfig figcaption{margin-top:10px;font-size:.82rem;color:var(--muted)}
+.capnums{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
+.capnums b{display:block;font:500 1.6rem/1.1 var(--mono)}
+.capnums .before b{color:var(--signal)}
+.capnums .after{text-align:right}
+.capnums .after b{color:var(--accent)}
+
+/* sections */
+section{padding-block:48px;border-top:1px solid var(--rule)}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:28px}
+.sechead p{color:var(--muted);max-width:52ch}
+
+/* experience */
+.roles{display:grid;gap:0}
+.role{display:grid;grid-template-columns:190px 1fr;gap:24px;padding-block:22px;border-bottom:1px solid var(--rule)}
+.role:first-child{padding-top:0}
+.role:last-child{border-bottom:0}
+.role .when{font:400 .85rem/1.5 var(--mono);color:var(--muted)}
+.role h3 + .org{color:var(--muted);font-size:.95rem;margin-top:2px}
+.role ul{margin:10px 0 0;padding-left:1.1em;max-width:70ch}
+.role li{margin-top:4px}
+.role li::marker{color:var(--accent)}
+
+/* case files */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.case{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.case .meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.case .tag{font:500 .7rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 7px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+.case .tag.data{background:var(--signal-soft);color:var(--signal)}
+.case p{color:var(--ink);font-size:.95rem}
+.kpis{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:auto;padding-top:12px;border-top:1px dashed var(--rule)}
+.kpis div{min-width:0}
+.kpis b{display:block;font:500 1.05rem/1.2 var(--mono);color:var(--ink)}
+.kpis span{font-size:.75rem;color:var(--muted)}
+.tools{font:400 .78rem/1.4 var(--mono);color:var(--muted)}
+.also{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.also div{padding:14px 0;border-top:2px solid var(--ink)}
+.also h3{font-size:.98rem}
+.also p{font-size:.88rem;color:var(--muted);margin-top:4px}
+
+/* commercial */
+.commercial{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.commercial article{padding:20px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);display:flex;flex-direction:column;gap:8px;min-width:0}
+.commercial .label{color:var(--signal)}
+.commercial p{font-size:.92rem}
+
+/* skills + credentials */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.skillgroup + .skillgroup{margin-top:20px}
+.skillgroup .label{margin-bottom:8px}
+.skillgroup .facts{margin-top:0}
+.ledger{width:100%;border-collapse:collapse;font-size:.93rem}
+.ledger td{padding:10px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.ledger td:last-child{text-align:right;white-space:nowrap;padding-left:16px;font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.ledger .sub{display:block;color:var(--muted);font-size:.84rem}
+.status{font:500 .68rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:4px 6px;border-radius:4px}
+.status.done{background:var(--accent-soft);color:var(--accent)}
+.status.prog{background:var(--signal-soft);color:var(--signal)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
+.contact p{max-width:52ch}
+.links{display:grid;gap:10px}
+.links div{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);min-width:0;flex-wrap:wrap}
+.links .val{font-family:var(--mono);font-size:.88rem;overflow-wrap:anywhere;user-select:all}
+.copy{font:500 .78rem/1 var(--mono);background:none;border:1px solid var(--rule);border-radius:4px;padding:6px 8px;color:var(--ink);cursor:pointer}
+footer{padding-block:28px;border-top:1px solid var(--rule);color:var(--muted);font-size:.82rem}
+
+@media (max-width:820px){
+  .hero .wrap,.two,.contact{grid-template-columns:1fr}
+  .cases{grid-template-columns:1fr}
+  .commercial,.also{grid-template-columns:1fr}
+  .role{grid-template-columns:1fr;gap:4px}
+  .hero .wrap{padding-block:36px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .curve{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 1.4s ease-out forwards}
+  .curve.after{animation-delay:.5s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">V. AMPOLU</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#work">Case files</a>
+      <a href="#commercial">Commercial</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="label">Operations &amp; transformation · London</p>
+        <h1 style="margin-top:14px">Viswanadham Ampolu <span>I make processes measurable, then make them better.</span></h1>
+        <p class="lede">Engineering Management MSc candidate at the University of East London and PMP-certified project professional. I bring a mechanical engineering base, consulting delivery at Blackmont Consulting, and hands-on DMAIC, PMO and analytics work in Python, Power BI and Excel.</p>
+        <div class="facts">
+          <span class="chip on">PMP · PMI 2026</span>
+          <span class="chip">MSc Eng. Management · UEL</span>
+          <span class="chip">DMAIC · Lean · 5S/Kaizen</span>
+          <span class="chip">Python · Power BI · Excel</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#work">See case files</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/viswanadham-ampolu" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/viswanadh-ampolu" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <figure class="capfig" style="margin:0">
+        <p class="label" style="margin-bottom:10px">Process capability · DMAIC Quality Analytics</p>
+        <div class="capnums">
+          <div class="before"><span class="label">Before</span><b>Cpk 0.68</b></div>
+          <div class="after"><span class="label">After</span><b>Cpk 1.83</b></div>
+        </div>
+        <svg id="cap" viewBox="0 0 400 210" role="img" aria-label="Two distributions between lower and upper specification limits: a wide, off-centre curve at Cpk 0.68 and a narrow, centred curve at Cpk 1.83."></svg>
+        <figcaption>Curves drawn to the two Cpk values reported in the project, against the same specification limits.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sechead">
+        <h2>Experience</h2>
+        <p>Consulting delivery, operations and large-programme project support across the UK and India.</p>
+      </div>
+      <div class="roles">
+        <div class="role">
+          <div class="when">Aug 2026 – Oct 2026<br>London</div>
+          <div>
+            <h3>Business Consultant (Project Coordinator)</h3>
+            <p class="org">Blackmont Consulting</p>
+            <ul>
+              <li>Coordinated an 8-week, client-facing market-entry engagement for a healthcare technology (medical devices) client entering Dubai, through to final review and handover.</li>
+              <li>Owned the Pilot and Implementation Strategy workstream and co-authored the Dubai SaMD regulatory classification memo.</li>
+              <li>Ran the master action tracker for a six-person team split into three sub-teams; wrote and circulated meeting minutes; built a project portal with an action tracker and KPI dashboard.</li>
+              <li>Invited back by the founder for a second engagement.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when">Jan 2024 – Dec 2024<br>Visakhapatnam</div>
+          <div>
+            <h3>Operations Associate</h3>
+            <p class="org">Tech Mahindra</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when">Nov 2021 – Nov 2023<br>New Delhi</div>
+          <div>
+            <h3>Project Intern</h3>
+            <p class="org">Larsen &amp; Toubro (L&amp;T)</p>
+            <ul>
+              <li>Worked on the Indira Gandhi International Airport Phase 3A expansion.</li>
+              <li>Tracked and reported manpower and resource allocation across workstreams.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sechead">
+        <h2>Case files</h2>
+        <p>Self-directed and academic projects. Data projects use public datasets or simulated programmes and are labelled as such.</p>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <div class="meta"><span class="tag data">Public dataset</span><span class="label">Quality · DMAIC</span></div>
+          <h3>DMAIC Quality Analytics</h3>
+          <p>A full Define–Measure–Analyse–Improve–Control cycle in Python: baseline capability study, root-cause analysis and control plan for a manufacturing quality characteristic.</p>
+          <div class="kpis"><div><b>0.68 → 1.83</b><span>Process capability (Cpk)</span></div></div>
+          <p class="tools">Python · SPC · capability analysis</p>
+        </article>
+        <article class="case">
+          <div class="meta"><span class="tag data">Public dataset</span><span class="label">Operations · DMAIC</span></div>
+          <h3>Late Delivery Reduction</h3>
+          <p>DMAIC applied to e-commerce fulfilment on the Olist dataset: defining the late-delivery defect, locating where delays build up, and proposing controls.</p>
+          <div class="kpis"><div><b>96,470</b><span>Orders analysed</span></div></div>
+          <p class="tools">Python · Olist e-commerce data</p>
+        </article>
+        <article class="case">
+          <div class="meta"><span class="tag">Simulated programme</span><span class="label">PMO</span></div>
+          <h3>ERP Programme PMO Toolkit</h3>
+          <p>A full PMO set-up for a simulated ERP transformation: integrated plan, milestone tracking, RAID log with 5×5 risk scoring, stakeholder power/interest map and an executive Power BI dashboard.</p>
+          <div class="kpis">
+            <div><b>£4.2m</b><span>Budget, 18 months</span></div>
+            <div><b>110</b><span>Tasks</span></div>
+            <div><b>10</b><span>Milestones</span></div>
+            <div><b>14</b><span>Stakeholders mapped</span></div>
+          </div>
+          <p class="tools">Power BI · Excel · RAID · stakeholder mapping</p>
+        </article>
+        <article class="case">
+          <div class="meta"><span class="tag data">Public dataset</span><span class="label">Commercial analytics</span></div>
+          <h3>Retail Growth Diagnostic</h3>
+          <p>Customer segmentation of the UCI Online Retail dataset using RFM analysis, written up as an SCQA-structured executive deck with growth recommendations.</p>
+          <div class="kpis"><div><b>541,909</b><span>Transactions analysed</span></div></div>
+          <p class="tools">Python · RFM segmentation · SCQA storytelling</p>
+        </article>
+        <article class="case">
+          <div class="meta"><span class="tag">MSc dissertation</span><span class="label">Governance · Risk</span></div>
+          <h3>Generative AI Governance Framework</h3>
+          <p>A quality-focused governance framework for engineering reliability and risk management, written for VP/CTO engineering leadership in global technology firms and Formula One engineering systems.</p>
+          <p class="tools">University of East London · EG7030</p>
+        </article>
+        <article class="case">
+          <div class="meta"><span class="tag data">Public data</span><span class="label">Motorsport · Python</span></div>
+          <h3>FastF1 Race Strategy Simulator</h3>
+          <p>Race strategy modelling on Formula One timing data: tyre degradation, stint lengths and pit-stop windows.</p>
+          <p class="tools">Python · FastF1</p>
+        </article>
+      </div>
+
+      <div class="also">
+        <div><h3>Programme Schedule Analyser</h3><p>Schedule health checks feeding a PMO dashboard.</p></div>
+        <div><h3>Toyota Recall Crisis</h3><p>DMAIC case study of a large-scale quality failure.</p></div>
+        <div><h3>5S &amp; Kaizen Workshop</h3><p>BTech project improving a workshop layout and flow.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="commercial">
+    <div class="wrap">
+      <div class="sechead">
+        <h2>Commercial &amp; financial analysis</h2>
+        <p>A second skill set alongside operations: reading a business through its numbers.</p>
+      </div>
+      <div class="commercial">
+        <article>
+          <p class="label">Sep 2026 – present</p>
+          <h3>Equity Research Intern · Wall Street Oasis</h3>
+          <p>Building a full stock pitch on Rolls-Royce Holdings plc (LSE: RR.): company and industry overview, financial analysis, valuation, risks and recommendation, reviewed section by section by a programme mentor.</p>
+        </article>
+        <article>
+          <p class="label">Forage · 2026</p>
+          <h3>KPMG UK Audit Job Simulation</h3>
+          <p>Virtual job simulation covering audit tasks in a KPMG UK context.</p>
+        </article>
+        <article>
+          <p class="label">Forage</p>
+          <h3>Accenture Strategy Consulting Simulation</h3>
+          <p>Virtual job simulation on structuring and presenting a strategy consulting problem.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="wrap two">
+      <div>
+        <div class="sechead" style="margin-bottom:20px"><h2>Toolkit</h2></div>
+        <div class="skillgroup">
+          <p class="label">Process &amp; quality</p>
+          <div class="facts"><span class="chip">DMAIC</span><span class="chip">Lean</span><span class="chip">5S / Kaizen</span><span class="chip">SPC &amp; capability</span><span class="chip">Root-cause analysis</span></div>
+        </div>
+        <div class="skillgroup">
+          <p class="label">Project &amp; programme</p>
+          <div class="facts"><span class="chip">PMO set-up</span><span class="chip">RAID logs</span><span class="chip">Stakeholder mapping</span><span class="chip">Agile</span><span class="chip">Action tracking</span></div>
+        </div>
+        <div class="skillgroup">
+          <p class="label">Data &amp; tools</p>
+          <div class="facts"><span class="chip">Python</span><span class="chip">Power BI / DAX</span><span class="chip">Advanced Excel</span><span class="chip">Minitab</span><span class="chip">SQL (developing)</span><span class="chip">AutoCAD</span><span class="chip">SolidWorks</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sechead" style="margin-bottom:20px"><h2>Credentials</h2></div>
+        <table class="ledger">
+          <tbody>
+            <tr><td>MSc Engineering Management (with Industrial Placement)<span class="sub">University of East London · average to date 68% (Merit)</span></td><td>Jan 2027</td></tr>
+            <tr><td>BTech, Mechanical Engineering<span class="sub">JNTU Kakinada · 70%</span></td><td>Completed</td></tr>
+            <tr><td>Diploma, Mechanical Engineering<span class="sub">JNTU Kakinada · 68%</span></td><td>Completed</td></tr>
+            <tr><td>Project Management Professional (PMP)<span class="sub">Project Management Institute</span></td><td><span class="status done">Certified 2026</span></td></tr>
+            <tr><td>Six Sigma Black Belt &amp; Green Belt learning paths<span class="sub">LinkedIn Learning</span></td><td><span class="status done">Completed 2026</span></td></tr>
+            <tr><td>Google Project Management Certificate</td><td><span class="status prog">In progress</span></td></tr>
+            <tr><td>PRINCE2 Foundation · APM</td><td><span class="status prog">Studying</span></td></tr>
+            <tr><td>ACE Ethics and Integrity Sub-Committee Member<span class="sub">University of East London</span></td><td>Leadership</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <h2>Let's talk</h2>
+        <p style="margin-top:14px">I'm looking for graduate roles in operations and transformation consulting, project management and analytics, starting from January 2027. Based in London and available on the UK Graduate visa.</p>
+      </div>
+      <div class="links">
+        <div><span class="label">Email</span><span class="val" id="em">viswanadh.ampolu@gmail.com</span><button class="copy" id="copyEm" type="button">Copy</button></div>
+        <div><span class="label">LinkedIn</span><a class="val" href="https://www.linkedin.com/in/viswanadham-ampolu" target="_blank" rel="noopener">linkedin.com/in/viswanadham-ampolu</a></div>
+        <div><span class="label">GitHub</span><a class="val" href="https://github.com/viswanadh-ampolu" target="_blank" rel="noopener">github.com/viswanadh-ampolu</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Viswanadham Ampolu · London · 2026</div></footer>
+
+<script>
+(function(){
+  // Normal curves drawn to the reported Cpk values. Spec limits at -3 and +3.
+  var svg=document.getElementById('cap'); if(!svg) return;
+  var NS='http://www.w3.org/2000/svg', W=400, H=210, top=22, base=180, xmin=-4.6, xmax=4.6;
+  var X=function(v){return 14+(v-xmin)/(xmax-xmin)*(W-28)};
+  // before: mean 0.3, Cpk 0.68 -> sigma = (3-0.3)/(3*0.68); after: mean 0.1, Cpk 1.83 -> sigma = (3-0.1)/(3*1.83)
+  var curves=[{m:.3,s:(3-.3)/(3*.68),cls:'before',col:'var(--signal)'},{m:.1,s:(3-.1)/(3*1.83),cls:'after',col:'var(--accent)'}];
+  var pdf=function(x,m,s){return Math.exp(-.5*Math.pow((x-m)/s,2))/(s*Math.sqrt(2*Math.PI))};
+  var peak=pdf(.1,.1,curves[1].s), Y=function(p){return base-(p/peak)*(base-top)};
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
+  el('line',{x1:X(xmin),x2:X(xmax),y1:base,y2:base,stroke:'var(--rule)','stroke-width':1});
+  [[-3,'LSL'],[3,'USL']].forEach(function(l){
+    el('line',{x1:X(l[0]),x2:X(l[0]),y1:top-6,y2:base,stroke:'var(--muted)','stroke-width':1,'stroke-dasharray':'4 4'});
+    var t=el('text',{x:X(l[0]),y:base+20,'text-anchor':'middle',fill:'var(--muted)','font-family':'IBM Plex Mono, monospace','font-size':11});t.textContent=l[1];
+  });
+  curves.forEach(function(c){
+    var d='',a='';
+    for(var i=0;i<=180;i++){var x=xmin+(xmax-xmin)*i/180,y=Y(pdf(x,c.m,c.s));d+=(i?'L':'M')+X(x).toFixed(1)+' '+y.toFixed(1)}
+    a=d+'L'+X(xmax)+' '+base+'L'+X(xmin)+' '+base+'Z';
+    el('path',{d:a,fill:c.col,'fill-opacity':c.cls==='after'?.14:.1,stroke:'none'});
+    el('path',{d:d,fill:'none',stroke:c.col,'stroke-width':2.2,'class':'curve '+c.cls});
+  });
+})();
+(function(){
+  var b=document.getElementById('copyEm'),v=document.getElementById('em');
+  if(!b) return;
+  b.addEventListener('click',function(){
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1600)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(v);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'};
+    try{navigator.clipboard.writeText(v.textContent).then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
+
+</body>
+</html>
